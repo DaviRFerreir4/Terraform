@@ -1,21 +1,21 @@
 resource "aws_vpc" "my_vpc" {
   cidr_block = var.vpc_cidr_block
 
-  tags = ""
+  tags = local.common_tags
 }
 
 resource "aws_subnet" "my_subnet" {
   vpc_id     = aws_vpc.my_vpc.id
   cidr_block = var.subnet_cidr_block
 
-  tags = ""
+  tags = local.common_tags
 }
 
 resource "aws_security_group" "my_instance_security_group" {
   name   = var.security_group_name
   vpc_id = aws_vpc.my_vpc.id
 
-  tags = ""
+  tags = local.common_tags
 }
 
 resource "aws_vpc_security_group_ingress_rule" "my_security_group_rule" {
@@ -25,7 +25,7 @@ resource "aws_vpc_security_group_ingress_rule" "my_security_group_rule" {
   to_port           = var.port
   from_port         = var.port
 
-  tags = ""
+  tags = local.common_tags
 }
 
 resource "aws_instance" "my_instance" {
@@ -37,5 +37,5 @@ resource "aws_instance" "my_instance" {
   key_name = var.key_name
   associate_public_ip_address = var.is_instance_open
 
-  tags = ""
+  tags = local.common_tags
 }
