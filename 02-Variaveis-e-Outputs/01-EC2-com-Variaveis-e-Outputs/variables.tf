@@ -47,6 +47,7 @@ variable "instance_type" {
 variable "key_name" {
   type = string
   description = "Define qual será a key para acessar a instância via SSH"
+  sensitive = true
 }
 
 variable "is_instance_open" {
