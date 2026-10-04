@@ -10,7 +10,7 @@ terraform {
 
   backend "s3" {
     bucket = "davirf-terraform-remote-state"
-    key    = "aws-ec2-instance/terraform.tfstate"
+    key    = "aws-ec2-instance-provisioners/terraform.tfstate"
     region = "sa-east-1"
   }
 }
