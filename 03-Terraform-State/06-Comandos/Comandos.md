@@ -23,3 +23,14 @@
 
 - Faz um refresh do state para que ele reflita as alterações que possam ter sido feitas através de outra ferramenta do provider
 - Tem desvantagens, pois não atualiza o código do terraform, então ao rodar um terraform plan sem alterar o código, ele vai querer remover as alterações que foram obtidas no state
+
+## terraform init
+
+- terraform init -reconfigure: é utilizado quando você quer mudar alguma configuração relacionada ao backend, criando uma nova referência a outro backend mas com o state zerado, então ele irá querer criar todos os recursos do zero
+- terraform init -migrate-state: é utilizado quando você quer mudar alguma configuração relacionada ao backend, mas dessa vez migrando o state do backend original para o novo
+- terraform init -force-copy: mesma coisa do de cima, mas não pede confirmação
+- terraform init -backend-config=_arquivo do backend_.hcl: muito usado em pipelines, onde não existe o .terraform, .terraform.lock.hcl, plan.out e .tfstate, esse comando passa configurações que serão utilizadas no backend, permitindo a separação de ambientes como dev, uat, prod
+
+## terraform force-unlock
+
+- Faz com que um state lock que tenha sido bloqueado seja forçadamente desbloqueado, passando o id da lock que foi feita. É útil caso por algum motivo ele tenha entrado em lock e o processo que estivesse utilizando ele tenha sido interrompido no meio
