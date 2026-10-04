@@ -1,0 +1,27 @@
+terraform {
+  required_version = ">= 1.7.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "6.67.0"
+    }
+  }
+
+  backend "s3" {
+    bucket = "davirf-terraform-remote-state"
+    key    = "blocks/terraform.tfstate"
+    region = "sa-east-1"
+  }
+}
+
+provider "aws" {
+  region = "sa-east-1"
+
+  default_tags {
+    tags = {
+      owner      = "davirf"
+      managed-by = "terraform"
+    }
+  }
+}

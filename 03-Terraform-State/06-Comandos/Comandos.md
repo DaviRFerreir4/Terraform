@@ -8,7 +8,7 @@
 ## terraform state
 
 - terraform state list: lista os recursos que estão sendo gerenciados pelo terraform
-- terraform state mv: move a referência de um recurso para outra. Ex: terraform state mv aws_s3_bucket.bucket_1 aws_s3_bucket.bucket_um
+- terraform state mv _tipo de recurso_._referência anterior do recurso_ _tipo de recurso_._referência nova do recurso_: move a referência de um recurso para outra
 - terraform state pull: baixa o state remoto. Caso seja seguido de um "> _nome do arquivo_.tfstate" ele grava esse state baixado num arquivo
 - terraform state push -force _nome do arquivo_.tfstate: envia um arquivo .tfstate para o state remoto. A flag -force serve para enviar states com serial numbers mais antigos que o atual do state remoto (para voltar o state para um backup anterior)
 - terraform state replace-provider registry.terraform.io/_endpoint do provider antigo_ registry.terraform.io/_endpoint do provider novo_: altera um provider informado no state para outro
